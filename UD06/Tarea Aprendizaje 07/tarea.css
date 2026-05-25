@@ -1,0 +1,301 @@
+/* Todas las animaciones se detienen en hover */
+.corazon:hover, .circulo:hover, .cuadrado:hover, .moneda:hover, .objeto:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Rejilla contenedora*/
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 8em;
+  grid-row-gap: 6em;
+}
+
+/* Corazón css */
+.corazon {
+  background-color: red;
+  width: 2.5em;
+  height: 2.5em;
+  position: relative;
+
+/*
+  TODO:
+  Animación en bucle infinito alternando adelante y atrás con easing en entrada y salida,
+  animation-name: latido; 
+  animation-timing-function: ;
+  animation-iteration-count: ;
+  animation-duration:;
+  animation-direction: ;
+  */
+  animation-name: latido; 
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 0.7s;
+  animation-direction: alternate;
+}
+
+/* Hacemos los círculos superiores del corazón con pseudoelementos before y after absolutamente posicionados*/
+.corazon:before,
+.corazon:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.corazon:before {
+  top: -50%;
+  left: 0;
+}
+
+.corazon:after {
+  left: 50%;
+  top: 0;
+}
+
+/* La animación consiste en una transformación de escala,
+  la rotación se mantiene y sirve para enderezar el corazón, */
+@keyframes latido {
+  0% {
+    /*TODO: */
+    transform: scale(0.5) rotate(-45deg);
+  }
+  50% {
+    /*TODO: */
+    transform: scale(1) rotate(-45deg);
+  }
+  100% {
+    /*TODO: */
+    transform: scale(0.5) rotate(-45deg);
+  }
+}
+
+/* Cuadrado saltarín */
+.cuadrado {
+  width: 3em;
+  height: 3em;
+  background-color: navy;
+  border-radius: 10px;
+
+/* 
+  TODO:
+  Aniamción en bucle alterno, con easing 'custom'
+  animation-name: ; 
+  animation-timing-function: ;
+  animation-iteration-count: ;
+  animation-duration: ;
+  animation-direction: ;
+  animation-fill-mode: ;
+  */
+  animation-name: salto; 
+  animation-timing-function: cubic-bezier(0.1,0.25,0.1,1);
+  animation-iteration-count: infinite;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+  
+}
+
+/* La animación consiste en una transformación de escala (más pequeño al principio)
+y un efecto en la sombra que simula altura */
+@keyframes salto {
+  0% {
+    /*
+    TODO:
+    transform: ; 
+    box-shadow: ;
+    */
+    transform: scale(0.3); 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Cuadrado -> círculo */
+.circulo {
+  background: radial-gradient(
+    circle at center center,
+    teal 10%,
+    skyblue 20%,
+    teal 30%,
+    skyblue 40%,
+    teal 50%,
+    skyblue 60%,
+    teal 70%,
+    skyblue 80%,
+    white 100%
+  );
+  width: 4em;
+  height: 4em;
+  border: 1px solid red;
+  position: relative;
+
+  /* 
+  TODO:
+  Animación en bucle alterno con easing 'custom'
+  animation-name: zaldikomaldiko; 
+  animation-timing-function: ;
+  animation-iteration-count: ;
+  animation-duration: ;
+  animation-direction: ;
+  */
+  animation-name: zaldikomaldiko; 
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate;
+}
+
+/* Este elemento before tiene las mismas dimensiones que el elemento padre y está centrado en él. 
+Con border-radius redondeamos sus esquinas, con scale lo convertimos en un pequeño punto 
+y con transform origin configuramos que el escalado se produzca desde la mitad del borde inferior de este circulo.
+De esta manera se queda dentro del cuadrado círculo padre */
+.circulo:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  position: absolute;
+  border-radius: 100%;
+
+  /*
+  TODO:
+  transform-origin: ;
+  transform: ;
+  */
+  transform-origin: bottom center;
+  transform: scale(0.15);
+}
+
+/* La animación, consiste en una rotación y un cambio en el valor border-radius para hacer del cuadrado un círculo */
+@keyframes zaldikomaldiko {
+  100% {
+    /*
+    TODO:
+    border-radius: 
+    transform:
+    */
+    border-radius: 100%;
+    transform: rotate(1440deg);
+  }
+}
+
+/* Esta clase introduce un delay en el inicio de la animación del segundo cuadrado-círculo */
+.delay {
+  /*TODO: */
+  animation-delay: 1s;
+}
+
+/* Cuadrados 3D */
+/* Necesitamos un contenedor que hace de escena con un valor de perspectiva */
+.escena3d {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 3em;
+  height: 3em;
+  position: relative;
+
+  /*TODO: prespective: */
+  perspective: 500px;
+}
+
+/* Este es el objeto que contiene las caras y recibe la animación */
+.objeto {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  /*/* Usamos el shorthand para la animación, easing in y out e infinita.
+  Como los keyframes devuelven al objeto a su posición original, 
+  no necesitamos usar animation-direction: alternate como en otros casos
+  */
+  /*TODO: 
+  transform-style:
+  animation: 
+  */
+  transform-style: preserve-3d;
+  animation: balanceo 14s ease-in-out infinite;
+}
+
+/* Css para ambas caras */
+.cara {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 10% 15%;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.anverso {
+  background-color: teal;
+  transform: translateZ(4em);
+}
+
+/* El reverso recibe una transformación de translación y rotación tridimensional que generan el efecto de distancia 3D entre las caras,al balancearse el objeto parent  */
+.reverso {
+  background-color: orange;
+  transform: translateZ(-4em) rotateY(180deg);
+}
+
+/* La animación balancea el objeto parent, mediante una rotación en el eje Y */
+@keyframes balanceo {
+  0% {
+    /*TODO: */
+    transform: rotateY(40deg);
+  }
+
+  50% {
+    /*TODO: */
+    transform: rotateY(400deg);
+  }
+
+  100% {
+    /*TODO: */
+    transform: rotateY(40deg);
+  }
+}
+
+/* moneda giratoria */
+.moneda {
+  width: 4em;
+  height: 4em;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/67/Golden_Medal_-1_Icon.svg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 100%;
+
+  /*TODO: animation: */
+  animation: moneda 4s ease-in-out infinite alternate; 
+}
+
+/* Se voltea la moneda en el eje X */
+@keyframes moneda {
+  100% {
+    /*TODO: transform: */
+    transform: rotateX(180deg);
+  }
+}

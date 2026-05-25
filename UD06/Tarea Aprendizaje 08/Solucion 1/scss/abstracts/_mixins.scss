@@ -1,0 +1,27 @@
+
+@use 'variables' as var;
+
+@mixin barraCarga ($bg1,$bg2,$ancho,$largo,$borde,$radius) {
+    background-color: $bg1;
+    border: $borde solid $bg1;
+    border-radius: $radius;
+    margin: 1em auto;
+    min-height: $ancho;
+    position: relative;
+    width: $largo;
+
+    &::after {
+        -webkit-animation: rellenoBarra 3s ease-in-out 1s;
+        animation: rellenoBarra 3s ease-in-out 1s;
+        background-color: $bg2;
+        border-radius: $radius;
+        content: "";
+        height: 100%;
+        position: absolute;
+        width: 0;
+    }
+}
+
+@mixin bgGradient ($direccion,$rgba,$opacidad,$var1,$var2) {
+    background: linear-gradient(to $direccion, rgba($rgba,$opacidad), rgba($rgba,$var1), rgba($rgba,$var2));
+}

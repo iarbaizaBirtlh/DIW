@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  grid-gap: 1em;
+}
+
+.cuadrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background: skyblue;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform: rotate(180deg);
+}
+
+/* 
+  transform-origin define el punto desde donde se aplica la transformación
+  En este caso hereda este valor de su elemento padre que será .cuadrado
+  Si no se define, el punto de origen es el centro del elemento (50% 50%)
+
+  transform escala el elemento. en este caso al 10% de su tamaño original.
+  Por ejemplo, si el elemento mide 100px × 100px, con esta transformación quedará de 10px × 10px
+  El valor 1 representa el 100% del tamaño original. Valores menores a 1 reducen el tamaño. Valores mayores a 1 aumentan el tamaño
+*/
+.cuadrado:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: solid 1px red;
+  transform-origin: inherit;  
+  background: red;
+  transform: scale(0.1); 
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   
+  border: 1px solid red;
+}
+
+.uno {
+  transform-origin: top left;
+}
+.dos {
+  transform-origin: top center;
+}
+.tres {
+  transform-origin: top right;
+}
+
+.cuatro {
+  transform-origin: center left;
+}
+.cinco {
+  transform-origin: center center;
+}
+.seis {
+  transform-origin: center right;
+}
+
+.siete {
+  transform-origin: bottom left;
+}
+.ocho {
+  transform-origin: bottom center;
+}
+.nueve {
+  transform-origin: bottom right;
+}

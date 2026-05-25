@@ -1,0 +1,84 @@
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
+
+/*CURSOS*/
+.cursos {
+    align-items: center;
+    -webkit-animation: opacity-up linear 5s;
+    animation: opacity-up linear 5s;
+    display: flex;
+    justify-content: center;
+    margin: 1em auto;
+    width: 90%;
+
+    @media (max-width: var.$lg) {
+        flex-direction: column;
+        width: 60%;
+    }
+
+    &__lista {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 5px;
+        margin: 0 2em;
+        min-height: 150px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        
+        @media (max-width: var.$lg) {
+            margin: 3em;
+        } 
+
+        &:hover {
+            cursor: help;
+
+            img {
+                -webkit-animation: escalaObjeto 0.4s ease-in both;
+                animation: escalaObjeto 0.4s ease-in both;
+                
+            }
+            .cursos__lista__id {                           
+                -webkit-animation: slide-top 0.6s ease-in-out both;
+                animation: slide-top 0.6s ease-in-out both; 
+                min-height: 70px;         
+            }
+        }
+        
+        &__id {
+            @include mix.bgGradient(top,black,1,.8,.3);
+            align-items: center;
+            color: var.$blanco;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: absolute;
+            text-align: center;
+            text-shadow: 2px 2px black;
+            transform: translateY(-10px);
+            width: 100%;
+
+            h4 {
+                font-size: var.$h4;
+                margin-top: .3em;
+                padding: .1em;
+
+                @media (max-width: var.$xl) {
+                    font-size: var.$h4 - .3;
+                }
+            }
+
+            p {
+                font-size: .9em;
+                padding: .3em;
+
+                @media (max-width: var.$xl) {
+                    font-size: .8em;
+                }
+            }
+        }
+    }
+}
+

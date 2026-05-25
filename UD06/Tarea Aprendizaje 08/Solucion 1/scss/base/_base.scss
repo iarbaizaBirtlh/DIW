@@ -1,0 +1,48 @@
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/animation';
+
+
+body {
+    -webkit-animation: cargaColores 5s ease-out;
+    animation: cargaColores 5s ease-out;
+    // animation-delay: 2s;
+    // -webkit-animation-delay: 2s;
+    min-height: 100vh;
+    position: relative;
+    transition: all .3s ease;
+}
+
+/*CSS General*/
+body, html {
+    font-family: var.$letra-defecto;
+}
+
+h1 {
+    -webkit-animation: estiraPalabra 3s linear 1s;
+    animation: estiraPalabra 3s linear 1s;
+    color: var.$azul;
+    font-size: var.$h1;
+    letter-spacing: var.$espacio;
+    margin-bottom: 1em;
+    text-shadow: 1px 1px var.$blanco;
+
+    @media (max-width: var.$lg) {
+        font-size: var.$h1 - .9em;
+    }
+}
+
+section,
+img {
+    width: 100%;
+}
+
+section {
+    height: 50vh;
+}
+
+img {
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}

@@ -1,0 +1,26 @@
+Color fondo carga 1: rgba(0,154,183,.2);
+Color fondo carga 2: #abb8c3;
+Color fondo definitivo: #fff;
+
+
+Color letra título: #009ab7
+
+
+Barra de carga vacía: white
+Barra carga completada: #009ab7
+
+
+Sombreado parte inferior imágenes: rgba(0,0,0,0.x); (x es un valor que va variando)
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,240 @@
+/******************************************
+* Sergio Moreno Sanchez (smoreno@birt.eus)
+* DIW06 - Tarea Evaluativa 01 (Birt LH)
+* 27/04/2023
+*******************************************/
+
+// Variables de color y tiempo de animación general
+$colorPrincipal: rgb(0, 154, 183);
+$color1: rgba(0, 154, 183, .2);
+$color2: #abb8c3;
+$colorFinal: #fff;
+$tiempoAnimacion: 5s;
+
+/* Animación del color de fondo */
+body {
+    background-color: $colorFinal;
+    font-family: 'Times New Roman', Times, serif;
+
+    animation: {
+        name: animacionFondo;
+        duration: $tiempoAnimacion;
+    }
+
+    @keyframes animacionFondo {
+        0% {
+            background-color: $color1;
+        }
+
+        40% {
+            background-color: $color2;
+        }
+
+        80% {
+            background-color: $color1;
+        }
+
+        99% {
+            background-color: $color1;
+        }
+
+        100% {
+            background-color: $colorFinal;
+        }
+    }
+}
+
+/* Animación del título Birt LH */
+h1 {
+    margin-top: 100px;
+    margin-bottom: 150px;
+    text-align: center;
+    font-size: 5rem;
+    color: $colorPrincipal;
+    font-family: 'Times New Roman', Times, serif;
+
+    animation: {
+        name: animacionTitulo;
+        duration: $tiempoAnimacion;
+        timing-function: ease-in-out;
+
+    }
+
+    @keyframes animacionTitulo {
+        0% {
+            letter-spacing: 0px;
+        }
+
+        50% {
+            letter-spacing: 1em;
+        }
+
+        100% {
+            letter-spacing: 0px;
+        }
+    }
+}
+
+/* Animación de la barra de progreso de carga */
+.contenedor-barra {
+    background-color: $colorFinal;
+    border-radius: 2em;
+    margin: 0 auto;
+    width: 80%;
+    height: 40px;
+    padding: 6px;
+}
+
+.barra-progreso {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 40px;
+    background-color: $colorFinal;
+    border-radius: 2em;
+    overflow: hidden;
+
+    animation: {
+        name: desapareceBarraProgreso;
+        duration: $tiempoAnimacion;
+    }
+
+    @keyframes desapareceBarraProgreso {
+        0% {
+            visibility: hidden;
+        }
+
+        20% {
+            visibility: visible;
+        }
+
+        95% {
+            visibility: visible;
+        }
+
+        100% {
+            visibility: hidden;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $colorPrincipal;
+        transform: translateX(-100%);
+
+        animation: {
+            name: animacionBarraProgreso;
+            duration: $tiempoAnimacion;
+        }
+    }
+
+    @keyframes animacionBarraProgreso {
+        to {
+            transform: translateX(0%);
+        }
+    }
+}
+
+/*
+- Animación de entrada de las asignaturas tras desaparecer la barra de progreso.
+- Estilos del contenedor
+*/
+.asignaturas {
+    display: flex;
+    row-gap: 20px;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    transform: translateY(-80px);
+
+    animation: {
+        name: entradaAsignaturas;
+        duration: $tiempoAnimacion;
+    }
+
+    @keyframes entradaAsignaturas {
+        0% {
+            visibility: hidden;
+        }
+
+        99% {
+            visibility: hidden;
+        }
+
+        100% {
+            visibility: visible;
+        }
+    }
+}
+
+/* Estilos del contenedor de cada asignatura */
+.asignatura {
+    border-radius: 5px;
+    width: 400px;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+    /* transiciones fluidas */
+
+}
+
+/* Al pasar el ratón, el contenedor se desplaza hacía arriba y muestra una sombra */
+.asignatura:hover {
+    cursor: help;
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 19px -1px rgba(0, 0, 0, .2);
+
+
+    .texto {
+        /* mostrar el texto */
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: .1s;
+    }
+}
+
+/* Las imágenes escalan y rotan */
+.imagen {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+    /* transiciones fluidas */
+
+    &:hover {
+        transform: scale(2) rotate(15deg);
+    }
+}
+
+/* Estilo para el texto de las asignaturas:
+    - El texto permanece escondido mientras el ratón no esté encima.
+*/
+.texto {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    color: $colorFinal;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    opacity: 1;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* transiciones fluidas */
+
+    h3 {
+        /*estilos para h3 dentro del texto */
+        font-size: 1.5em;
+        margin-bottom: 0;
+    }
+
+    p {
+        /*estilos para p dentro del texto */
+        font-size: .8em;
+        margin-top: 0;
+    }
+}

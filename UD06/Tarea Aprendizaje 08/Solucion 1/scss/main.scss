@@ -1,0 +1,10 @@
+
+/*Bases*/
+@use 'base/resets';
+@use 'base/base';
+
+/*Componentes*/
+@use 'components/barra';
+@use 'components/cursos';
+
+@use 'layout/contenido';

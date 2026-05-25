@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  grid-gap: 1em;
+}
+
+.cuadrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background: skyblue;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  /*TODO: transform: */
+  transform: rotate(180deg);
+}
+
+.cuadrado:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: solid 1px red;
+  background: red;
+  transform-origin: inherit;  
+  transform: scale(0.1); 
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  border: 1px solid red;
+}
+
+/*TODO: */
+.uno {
+  transform-origin: top left;
+}
+/*TODO: */
+.dos {
+  transform-origin: top;
+}
+/*TODO: */
+.tres {
+  transform-origin: top right;
+}
+
+/*TODO: */
+.cuatro {
+  transform-origin: left;
+}
+/*TODO: */
+.cinco {
+  transform-origin: center;
+}
+/*TODO: */
+.seis {
+  transform-origin: right;
+}
+
+/*TODO: */
+.siete {
+  transform-origin: bottom left;
+}
+/*TODO: */
+.ocho {
+  transform-origin: bottom;
+}
+/*TODO: */
+.nueve {
+  transform-origin: bottom right;
+}

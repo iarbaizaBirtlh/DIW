@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
+
+.caja-barra {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    width: 80%;
+}
+
+.barra {
+    @include mix.barraCarga(var.$blanco, var.$azul, 25px, 75%, 5px, 50px);
+}

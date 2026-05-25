@@ -1,0 +1,52 @@
+body {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a6/Grass_01.jpg");
+  background-size: cover;
+}
+
+#bola {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  border: 1px solid grey;
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#agujero {
+  background-color: black;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  position: absolute;
+  left: 600px;
+  top: 100px;
+  box-shadow: inset 0 0 20px 2px white;
+  z-index: 0
+}
+
+.golpe {
+  animation-name: golpe;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;  
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  /* Delay para sincronizar con el sonido */
+  animation-delay: 0.2s;
+}
+
+@keyframes golpe {
+  80% {
+    transform: translateX(490px) scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(500px) scale(0.8);
+  }
+  100% {
+    transform: translateX(500px) scale(0.8); 
+    opacity: 0.8;
+  }
+}

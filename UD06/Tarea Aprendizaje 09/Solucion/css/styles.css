@@ -1,0 +1,583 @@
+@charset "UTF-8";
+/*
+ * Edurne Presa Angulo - DIW06 TE1 - Animaciones
+ * 
+ * ---------- ÍNDICE ----------  
+ * I. GENERAL
+ * II. TITULO
+ *    2.1. Animación de título
+ * III. RELOJ
+ *    3.1. Marcas del reloj 
+ *    3.2. Agujas del reloj
+ *    3.3. Animación de las agujas
+ * IV. MAIN 
+ *    4.1 Leyenda
+ *    4.2 Gráfico
+ *    4.3. Creación del gráfico
+ *    4.4. Animación del gráfico
+ */
+/* I. GENERAL */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: #ededed;
+}
+
+/* II. TITULO */
+header {
+  width: 100%;
+  height: 10vh;
+  text-align: center;
+  font-size: 1.7rem;
+  color: #006b8d;
+  margin: 1rem 0;
+  /* 2.1. Animación de título */
+  animation-name: titulo;
+  animation-duration: 2s;
+  /* Animación de título: bota al aparecer*/
+}
+@keyframes titulo {
+  0% {
+    transform: translateY(-500px);
+  }
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  55% {
+    transform: translateY(-30px);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  81% {
+    transform: translateY(-15px);
+    animation-timing-function: ease-in;
+  }
+  90% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  95% {
+    transform: translateY(-8px);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+}
+
+/* III. RELOJ */
+aside {
+  width: 10%;
+  position: fixed;
+  margin-left: 3%;
+  transform: rotate(180deg);
+  /* 3.3. Animación de las agujas */
+}
+aside .reloj {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 3.1. Marcas del reloj */
+  /* 3.2. Agujas del reloj */
+}
+aside .reloj .reloj__base {
+  background-color: white;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  border: 3px solid #02b2d5;
+  z-index: 0;
+  position: absolute;
+}
+aside .reloj .centro {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background-color: #02b2d5;
+  border: white solid 6px;
+  z-index: 13;
+  position: absolute;
+}
+aside .reloj .arriba,
+aside .reloj .derecha,
+aside .reloj .abajo,
+aside .reloj .izquierda {
+  content: "";
+  background-color: #02b2d5;
+  position: absolute;
+  color: #02b2d5;
+  z-index: 10;
+}
+aside .reloj .arriba {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+aside .reloj .derecha {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+aside .reloj .abajo {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+aside .reloj .izquierda {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+aside .reloj .arriba,
+aside .reloj .abajo {
+  width: 3px;
+  height: 7px;
+}
+aside .reloj .derecha,
+aside .reloj .izquierda {
+  width: 7px;
+  height: 3px;
+}
+aside .reloj .aguja__minutos {
+  content: "";
+  width: 2px;
+  height: 50px;
+  background-color: rgba(0, 153, 183, 0.371);
+  position: absolute;
+  color: #02b2d5;
+  z-index: 11;
+  animation-name: girarMinutos;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+aside .reloj .aguja__horas {
+  content: "";
+  width: 2px;
+  height: 40px;
+  background-color: #009ab7;
+  position: absolute;
+  color: #02b2d5;
+  z-index: 12;
+  animation-name: girarHoras;
+  animation-duration: 24s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+aside .reloj .aguja__horas,
+aside .reloj .aguja__minutos {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center top;
+}
+@keyframes girarMinutos {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes girarHoras {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* IV. MAIN */
+main {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 75vh;
+  /* 4.1 Leyenda */
+  /* 4.2 Gráfico */
+  /* 4.3. Creación del gráfico */
+  /* 4.4. Animación del gráfico - carga de página */
+}
+main .leyenda {
+  width: 15%;
+}
+main .leyenda h6 {
+  font-size: 1.3rem;
+  color: #006b8d;
+  text-decoration: underline;
+  margin: 1rem;
+}
+main .leyenda p {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin: 1rem;
+}
+main .leyenda p:nth-child(odd) {
+  color: #009ab7;
+}
+main .leyenda p:nth-child(even) {
+  color: rgba(0, 153, 183, 0.371);
+}
+main .chart {
+  width: 85%;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  grid-column-gap: 5px;
+  padding: 5px 10px;
+  justify-content: center;
+  grid-area: grafico;
+  /* Animación del gráfico */
+  animation-name: graficos;
+  animation-duration: 2s;
+}
+main [class*=bar] {
+  border-radius: 5px 5px 0 0;
+  grid-row-start: 1;
+  grid-row-end: 101;
+  transition: all 0.2s; /* Transiciones suaves */
+  /* Si hover:
+   *  - se agranda la columna
+   *  - se muestra el número
+   */
+}
+main [class*=bar] p {
+  visibility: hidden;
+}
+main [class*=bar]:hover {
+  transform: scale(1.08);
+}
+main [class*=bar]:hover p {
+  visibility: visible;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+main .bar-1 {
+  grid-row-start: 99;
+}
+main .bar-2 {
+  grid-row-start: 98;
+}
+main .bar-3 {
+  grid-row-start: 97;
+}
+main .bar-4 {
+  grid-row-start: 96;
+}
+main .bar-5 {
+  grid-row-start: 95;
+}
+main .bar-6 {
+  grid-row-start: 94;
+}
+main .bar-7 {
+  grid-row-start: 93;
+}
+main .bar-8 {
+  grid-row-start: 92;
+}
+main .bar-9 {
+  grid-row-start: 91;
+}
+main .bar-10 {
+  grid-row-start: 90;
+}
+main .bar-11 {
+  grid-row-start: 89;
+}
+main .bar-12 {
+  grid-row-start: 88;
+}
+main .bar-13 {
+  grid-row-start: 87;
+}
+main .bar-14 {
+  grid-row-start: 86;
+}
+main .bar-15 {
+  grid-row-start: 85;
+}
+main .bar-16 {
+  grid-row-start: 84;
+}
+main .bar-17 {
+  grid-row-start: 83;
+}
+main .bar-18 {
+  grid-row-start: 82;
+}
+main .bar-19 {
+  grid-row-start: 81;
+}
+main .bar-20 {
+  grid-row-start: 80;
+}
+main .bar-21 {
+  grid-row-start: 79;
+}
+main .bar-22 {
+  grid-row-start: 78;
+}
+main .bar-23 {
+  grid-row-start: 77;
+}
+main .bar-24 {
+  grid-row-start: 76;
+}
+main .bar-25 {
+  grid-row-start: 75;
+}
+main .bar-26 {
+  grid-row-start: 74;
+}
+main .bar-27 {
+  grid-row-start: 73;
+}
+main .bar-28 {
+  grid-row-start: 72;
+}
+main .bar-29 {
+  grid-row-start: 71;
+}
+main .bar-30 {
+  grid-row-start: 70;
+}
+main .bar-31 {
+  grid-row-start: 69;
+}
+main .bar-32 {
+  grid-row-start: 68;
+}
+main .bar-33 {
+  grid-row-start: 67;
+}
+main .bar-34 {
+  grid-row-start: 66;
+}
+main .bar-35 {
+  grid-row-start: 65;
+}
+main .bar-36 {
+  grid-row-start: 64;
+}
+main .bar-37 {
+  grid-row-start: 63;
+}
+main .bar-38 {
+  grid-row-start: 62;
+}
+main .bar-39 {
+  grid-row-start: 61;
+}
+main .bar-40 {
+  grid-row-start: 60;
+}
+main .bar-41 {
+  grid-row-start: 59;
+}
+main .bar-42 {
+  grid-row-start: 58;
+}
+main .bar-43 {
+  grid-row-start: 57;
+}
+main .bar-44 {
+  grid-row-start: 56;
+}
+main .bar-45 {
+  grid-row-start: 55;
+}
+main .bar-46 {
+  grid-row-start: 54;
+}
+main .bar-47 {
+  grid-row-start: 53;
+}
+main .bar-48 {
+  grid-row-start: 52;
+}
+main .bar-49 {
+  grid-row-start: 51;
+}
+main .bar-50 {
+  grid-row-start: 50;
+}
+main .bar-51 {
+  grid-row-start: 49;
+}
+main .bar-52 {
+  grid-row-start: 48;
+}
+main .bar-53 {
+  grid-row-start: 47;
+}
+main .bar-54 {
+  grid-row-start: 46;
+}
+main .bar-55 {
+  grid-row-start: 45;
+}
+main .bar-56 {
+  grid-row-start: 44;
+}
+main .bar-57 {
+  grid-row-start: 43;
+}
+main .bar-58 {
+  grid-row-start: 42;
+}
+main .bar-59 {
+  grid-row-start: 41;
+}
+main .bar-60 {
+  grid-row-start: 40;
+}
+main .bar-61 {
+  grid-row-start: 39;
+}
+main .bar-62 {
+  grid-row-start: 38;
+}
+main .bar-63 {
+  grid-row-start: 37;
+}
+main .bar-64 {
+  grid-row-start: 36;
+}
+main .bar-65 {
+  grid-row-start: 35;
+}
+main .bar-66 {
+  grid-row-start: 34;
+}
+main .bar-67 {
+  grid-row-start: 33;
+}
+main .bar-68 {
+  grid-row-start: 32;
+}
+main .bar-69 {
+  grid-row-start: 31;
+}
+main .bar-70 {
+  grid-row-start: 30;
+}
+main .bar-71 {
+  grid-row-start: 29;
+}
+main .bar-72 {
+  grid-row-start: 28;
+}
+main .bar-73 {
+  grid-row-start: 27;
+}
+main .bar-74 {
+  grid-row-start: 26;
+}
+main .bar-75 {
+  grid-row-start: 25;
+}
+main .bar-76 {
+  grid-row-start: 24;
+}
+main .bar-77 {
+  grid-row-start: 23;
+}
+main .bar-78 {
+  grid-row-start: 22;
+}
+main .bar-79 {
+  grid-row-start: 21;
+}
+main .bar-80 {
+  grid-row-start: 20;
+}
+main .bar-81 {
+  grid-row-start: 19;
+}
+main .bar-82 {
+  grid-row-start: 18;
+}
+main .bar-83 {
+  grid-row-start: 17;
+}
+main .bar-84 {
+  grid-row-start: 16;
+}
+main .bar-85 {
+  grid-row-start: 15;
+}
+main .bar-86 {
+  grid-row-start: 14;
+}
+main .bar-87 {
+  grid-row-start: 13;
+}
+main .bar-88 {
+  grid-row-start: 12;
+}
+main .bar-89 {
+  grid-row-start: 11;
+}
+main .bar-90 {
+  grid-row-start: 10;
+}
+main .bar-91 {
+  grid-row-start: 9;
+}
+main .bar-92 {
+  grid-row-start: 8;
+}
+main .bar-93 {
+  grid-row-start: 7;
+}
+main .bar-94 {
+  grid-row-start: 6;
+}
+main .bar-95 {
+  grid-row-start: 5;
+}
+main .bar-96 {
+  grid-row-start: 4;
+}
+main .bar-97 {
+  grid-row-start: 3;
+}
+main .bar-98 {
+  grid-row-start: 2;
+}
+main .bar-99 {
+  grid-row-start: 1;
+}
+main .bar-100 {
+  grid-row-start: 0;
+}
+main [class*=bar]:nth-child(odd) {
+  background-color: #009ab7;
+}
+main [class*=bar]:nth-child(even) {
+  background-color: rgba(0, 153, 183, 0.371);
+}
+@keyframes graficos {
+  0% {
+    transform: scaleY(0);
+    transform-origin: 0% 100%;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: 0% 100%;
+  }
+}/*# sourceMappingURL=styles.css.map */
