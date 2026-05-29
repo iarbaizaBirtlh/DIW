@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UD06: El Santo Grial de las Animaciones (13 Ejercicios) - CORREGIDO</title>
+    <style>
+        /* ==========================================================================
+        ESTILOS DE MAQUETACIÓN GLOBAL
+        ========================================================================== */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #0b0f19;
+            color: #f1f5f9;
+            padding: 2rem;
+        }
+        h1 { text-align: center; color: #38bdf8; margin-bottom: 0.2rem; font-size: 2.5rem; }
+        .sub { text-align: center; color: #64748b; margin-bottom: 3rem; font-style: italic; }
+        .grid-laboratorio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        .caja-ejercicio {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 400px;
+        }
+        .titulo-ejercicio {
+            color: #38bdf8;
+            margin-top: 0;
+            border-bottom: 2px solid #334155;
+            width: 100%;
+            padding-bottom: 0.6rem;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .descripcion {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 1rem;
+            line-height: 1.4;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+        1. Relleno Líquido
+        ========================================================================== */
+        .btn-liquido {
+            position: relative; padding: 12px 36px; background-color: transparent;
+            color: #38bdf8; border: 2px solid #38bdf8; font-weight: bold; cursor: pointer;
+            overflow: hidden; transition: color 0.4s ease; z-index: 1; border-radius: 6px;
+        }
+        .btn-liquido::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            width: 300%; height: 300%; background-color: #38bdf8;
+            transition: transform 0.5s ease; transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%; z-index: -1;
+        }
+        .btn-liquido:hover { color: #0b0f19; }
+        .btn-liquido:hover::before { transform: translate(-50%, -50%) scale(1); }
+
+        /* ==========================================================================
+        2. Zoom & Rotación 2D (Fijado para mayor visibilidad)
+        ========================================================================== */
+        .marco-foto {
+            width: 200px; height: 130px; background-color: #0f172a; border-radius: 8px; 
+            overflow: hidden; border: 2px solid #475569; cursor: pointer;
+        }
+        .foto-interna {
+            width: 100%; height: 100%;
+            /* Patrón de rayas para que se note a la perfección el giro y el zoom */
+            background: repeating-linear-gradient(45deg, #ec4899, #ec4899 15px, #8b5cf6 15px, #8b5cf6 30px);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Se activa al pasar el ratón específicamente por el marco */
+        .marco-foto:hover .foto-interna { transform: scale(1.4) rotate(8deg); }
+
+        /* ==========================================================================
+        3. Menú Hamburguesa (Fijado activador de hover)
+        ========================================================================== */
+        .menu-hamburguesa {
+            display: flex; flex-direction: column; justify-content: space-between;
+            width: 40px; height: 30px; cursor: pointer; margin: auto; padding: 5px 0;
+        }
+        .barra { width: 100%; height: 4px; background-color: #f43f5e; border-radius: 4px; transition: transform 0.4s ease, opacity 0.3s ease; }
+        /* Ahora solo se activa al tocar el menú, no la caja entera */
+        .menu-hamburguesa:hover .b1 { transform: translateY(8px) rotate(45deg); }
+        .menu-hamburguesa:hover .b2 { opacity: 0; transform: translateX(-20px); }
+        .menu-hamburguesa:hover .b3 { transform: translateY(-8px) rotate(-45deg); }
+
+        /* ==========================================================================
+        4. Efecto Persiana
+        ========================================================================== */
+        .banner-persiana { position: relative; width: 240px; height: 140px; background-color: #34d399; border-radius: 8px; overflow: hidden; cursor: pointer; }
+        .capa-oculta { position: absolute; bottom: -100%; left: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.9); display: flex; align-items: center; justify-content: center; transition: bottom 0.4s ease-in-out; font-weight: bold;}
+        .banner-persiana:hover .capa-oculta { bottom: 0; }
+
+        /* ==========================================================================
+        5. Efecto Reveal
+        ========================================================================== */
+        .contenedor-reveal { overflow: hidden; height: 40px; }
+        .texto-reveal {
+            font-size: 1.8rem; font-weight: 800; color: #f59e0b; margin: 0; transform: translateY(100%);
+            animation: revealEfecto 1.5s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate;
+        }
+        @keyframes revealEfecto { 0%, 20% {transform: translateY(100%);} 80%, 100% { transform: translateY(0); } }
+
+        /* ==========================================================================
+        6. Barras Animadas (EQ)
+        ========================================================================== */
+        .contenedor-ecualizador { display: flex; align-items: flex-end; justify-content: space-between; width: 100px; height: 70px; }
+        .barra-eq { width: 12px; height: 100%; border-radius: 4px; transform-origin: bottom; animation: danzaBarras 0.8s ease-in-out infinite alternate; }
+        .eq-1 { animation-delay: 0.1s; background-color: #38bdf8; }
+        .eq-2 { animation-delay: 0.4s; background-color: #a855f7; }
+        .eq-3 { animation-delay: 0.2s; background-color: #f43f5e; }
+        .eq-4 { animation-delay: 0.5s; background-color: #10b981; }
+        .eq-5 { animation-delay: 0.3s; background-color: #f59e0b; }
+        @keyframes danzaBarras { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1); } }
+
+        /* ==========================================================================
+        7. Pulso de Alerta (Reescrito con Box-Shadow, blindado contra z-index)
+        ========================================================================== */
+        .radar-pulsador {
+            width: 30px; height: 30px; background-color: #a855f7;
+            border-radius: 50%;
+            /* Usamos boxShadow en lugar de un pseudo-elemento que se esconde detrás */
+            animation: ondaSombra 1.5s infinite;
+        }
+        @keyframes ondaSombra {
+            0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.8); }
+            70% { box-shadow: 0 0 0 25px rgba(168, 85, 247, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+        }
+
+        /* ==========================================================================
+        8. Ruta Perimetral
+        ========================================================================== */
+        .pista-recorrido { width: 200px; height: 120px; border: 2px dashed #475569; position: relative; border-radius: 8px; }
+        .movil-perimetral { width: 20px; height: 20px; background-color: #06b6d4; position: absolute; top: -10px; left: -10px; border-radius: 4px; animation: rutaBordes 4s linear infinite; }
+        @keyframes rutaBordes {
+            0%, 100% { top: -10px; left: -10px; }
+            25% { top: -10px; left: calc(100% - 10px); }
+            50% { top: calc(100% - 10px); left: calc(100% - 10px); }
+            75% { top: calc(100% - 10px); left: -10px; }
+        }
+
+        /* ==========================================================================
+        9. Caída en Tronera (Bola de Golf)
+        ========================================================================== */
+        .tapete-verde { width: 260px; height: 150px; background-color: #15803d; border-radius: 8px; position: relative; overflow: hidden;}
+        .tronera-negra { width: 36px; height: 36px; background-color: #020617; border-radius: 50%; position: absolute; bottom: 15px; right: 15px; }
+        .bola-golf-real { width: 18px; height: 18px; background-color: #ffffff; border-radius: 50%; position: absolute; top: 15px; left: 15px; animation: tiroAgujero 3s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
+        @keyframes tiroAgujero {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            60% { transform: translate(195px, 85px) scale(1); opacity: 1; }
+            80% { transform: translate(205px, 95px) scale(0.6); opacity: 0.8; }
+            100% { transform: translate(210px, 100px) scale(0); opacity: 0; }
+        }
+
+        /* ==========================================================================
+        10. Cartas de Tarot
+        ========================================================================== */
+        .tarot-escena { width: 130px; height: 190px; perspective: 800px; cursor: pointer;}
+        .tarot-tarjeta { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .tarot-escena:hover .tarot-tarjeta { transform: rotateY(180deg); }
+        .tarot-cara { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .t-frontal { background-color: #0f172a; color: #38bdf8; border: 2px solid #38bdf8; }
+        .t-trasera { background-color: #38bdf8; color: #0f172a; transform: rotateY(180deg); }
+
+        /* ==========================================================================
+        11. Render de Cubo 3D
+        ========================================================================== */
+        .escena-cubo { width: 80px; height: 80px; perspective: 400px; margin-top: 1rem;}
+        .cubo-3d { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; animation: rotarCuboInfinito 5s linear infinite; }
+        .cara-cubo { position: absolute; width: 80px; height: 80px; border: 2px solid #10b981; background: rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .front { transform: rotateY( 0deg) translateZ(40px); }
+        .back { transform: rotateY(180deg) translateZ(40px); }
+        .right { transform: rotateY( 90deg) translateZ(40px); }
+        .left { transform: rotateY(-90deg) translateZ(40px); }
+        .top { transform: rotateX( 90deg) translateZ(40px); }
+        .bottom { transform: rotateX(-90deg) translateZ(40px); }
+        @keyframes rotarCuboInfinito { from { transform: rotateX(0deg) rotateY(0deg); } to { transform: rotateX(360deg) rotateY(360deg); } }
+
+        /* ==========================================================================
+        12. Slider Infinito
+        ========================================================================== */
+        .marco-slider { width: 260px; overflow: hidden; background-color: #0f172a; border-radius: 6px; padding: 10px 0; }
+        .carrusel-track { display: flex; width: max-content; animation: scrollContinuo 4s linear infinite; }
+        .logo-item { width: 80px; height: 40px; background-color: #334155; margin: 0 5px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; border-radius: 4px;}
+        /* Desplaza exactamente el ancho de 3 items + sus márgenes */
+        @keyframes scrollContinuo { to { transform: translateX(calc(-90px * 3)); } }
+    </style>
+</head>
+<body>
+    <h1>🧪 Banco de Pruebas Absoluto: Unidad 06</h1>
+    <div class="sub">13 Ejercicios 100% Optimizados y Corregidos para Examen</div>
+
+    <div class="grid-laboratorio">
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">1. Relleno Líquido</h3>
+            <button class="btn-liquido">Hover Me</button>
+            <p class="descripcion">Transición con <code>scale</code> usando pseudo-elementos ocultos.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">2. Zoom & Rotación</h3>
+            <div class="marco-foto"><div class="foto-interna"></div></div>
+            <p class="descripcion">Hover sobre el marco. Combina matriz de <code>scale</code> y <code>rotate</code> sutil.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">3. Hamburguesa a X</h3>
+            <div class="menu-hamburguesa">
+                <div class="barra b1"></div>
+                <div class="barra b2"></div>
+                <div class="barra b3"></div>
+            </div>
+            <p class="descripcion">Hover sobre el icono. Cruza ejes Y con rotaciones a 45º.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">4. Efecto Persiana</h3>
+            <div class="banner-persiana"><div class="capa-oculta">REVEAL</div></div>
+            <p class="descripcion">Hover sobre la caja verde. Superposición con desplazamiento bottom.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">5. Efecto Máscara</h3>
+            <div class="contenedor-reveal"><div class="texto-reveal">REVEAL TEXT</div></div>
+            <p class="descripcion">Recorte estricto aplicando <code>overflow: hidden</code> al padre.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">6. Ondas EQ</h3>
+            <div class="contenedor-ecualizador">
+                <div class="barra-eq eq-1"></div>
+                <div class="barra-eq eq-2"></div>
+                <div class="barra-eq eq-3"></div>
+                <div class="barra-eq eq-4"></div>
+                <div class="barra-eq eq-5"></div>
+            </div>
+            <p class="descripcion">Escalado en Y con <code>transform-origin: bottom</code> y delays.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">7. Pulso de Alerta</h3>
+            <div class="radar-pulsador"></div>
+            <p class="descripcion">Onda infinita blindada generada mediante animación de <code>box-shadow</code>.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">8. Ruta Perimetral</h3>
+            <div class="pista-recorrido"><div class="movil-perimetral"></div></div>
+            <p class="descripcion">Recorrido cuadrado en bucle calculando posiciones absolutas (top/left).</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">9. Caída en Tronera</h3>
+            <div class="tapete-verde">
+                <div class="tronera-negra"></div>
+                <div class="bola-golf-real"></div>
+            </div>
+            <p class="descripcion">Línea temporal con <code>translate</code> para la ruta y <code>scale(0)</code> para colar la bola.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">10. Volteo Tarot 3D</h3>
+            <div class="tarot-escena">
+                <div class="tarot-tarjeta">
+                    <div class="tarot-cara t-frontal">🔮 Mago</div>
+                    <div class="tarot-cara t-trasera">✨ Carta</div>
+                </div>
+            </div>
+            <p class="descripcion">Hover sobre la carta. Ocultación con <code>backface-visibility</code>.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">11. Render de Cubo</h3>
+            <div class="escena-cubo">
+                <div class="cubo-3d">
+                    <div class="cara-cubo front">F</div><div class="cara-cubo back">B</div>
+                    <div class="cara-cubo right">R</div><div class="cara-cubo left">L</div>
+                    <div class="cara-cubo top">T</div><div class="cara-cubo bottom">B</div>
+                </div>
+            </div>
+            <p class="descripcion">Volumen generado rotando y empujando las caras en el <code>translateZ</code>.</p>
+        </div>
+
+        <div class="caja-ejercicio">
+            <h3 class="titulo-ejercicio">12. Slider Infinito</h3>
+            <div class="marco-slider">
+                <div class="carrusel-track">
+                    <div class="logo-item">DIW</div><div class="logo-item">CSS</div><div class="logo-item">HTML</div>
+                    <div class="logo-item">DIW</div><div class="logo-item">CSS</div><div class="logo-item">HTML</div>
+                </div>
+            </div>
+            <p class="descripcion">Desplazamiento horizontal <code>translateX</code> con elementos clonados para tapar el reinicio.</p>
+        </div>
+    </div>
+</body>
+</html>

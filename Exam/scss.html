@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de Pruebas - Maestro SCSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>🧪 Panel de Pruebas de Funcionalidades SCSS</h1>
+    <hr>
+
+    <section style="margin-bottom: 2rem;">
+        <h2>1. Botones automáticos (Bucle <code>@each</code> y función <code>darken</code>)</h2>
+        <p>Estos botones se han creado solos recorriendo el mapa de colores. Pasa el ratón por encima para ver el efecto hover dinámico.</p>
+        <button class="btn-primario">Botón Primario</button>
+        <button class="btn-secundario">Botón Secundario</button>
+        <button class="btn-oscuro">Botón Oscuro</button>
+        <button class="btn-claro">Botón Claro</button>
+        <button class="btn-peligro">Botón Peligro</button>
+    </section>
+
+    <section style="margin-bottom: 2rem;">
+        <h2>2. Espaciados Matemáticos (Bucle <code>@for</code>)</h2>
+        <p>Cajas con padding progresivo calculado multiplicando Pixeles en bucle:</p>
+        <div class="p-nivel-1" style="background: #ddd; margin-bottom: 5px;">Padding Nivel 1 (4px)</div>
+        <div class="p-nivel-2" style="background: #ccc; margin-bottom: 5px;">Padding Nivel 2 (8px)</div>
+        <div class="p-nivel-3" style="background: #bbb;">Padding Nivel 3 (12px)</div>
+    </section>
+
+    <section style="margin-bottom: 2rem;">
+        <h2>3. Componente Dashboard Completo (Mixins, Extends y Responsivo)</h2>
+        <p>Prueba a hacer la ventana del navegador más estrecha. Verás cómo cambia de fila a columna gracias al Mixin de la Media Query.</p>
+        
+        <div class="dashboard-grid">
+        
+        <aside class="nav-sidebar">
+            <ul>
+                <li><a href="#">🏠 Inicio</a></li>
+                <li><a href="#">📊 Estadísticas</a></li>
+                <li><a href="#">⚙️ Ajustes</a></li>
+            </ul>
+        </aside>
+
+        <article class="tarjeta-usuario">
+            <h3 class="tarjeta-usuario__titulo">Juan Pérez</h3>
+            <p class="tarjeta-usuario__detalles">Rol: Administrador de Sistemas</p>
+            <p>Esta tarjeta hereda su sombra y esquinas redondeadas de un <em>placeholder</em>, calcula su fuente con una función matemática y cambia de color según condicionales.</p>
+        </article>
+
+        </div>
+    </section>
+
+</body>
+</html>

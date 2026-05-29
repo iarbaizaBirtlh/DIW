@@ -1,0 +1,183 @@
+/* ==========================================================================
+   1. VARIABLES, MAPAS Y FUNCIONES (Para automatizar y no repetir valores)
+   ========================================================================== */
+
+// Variables simples (Para datos únicos y globales)
+$fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$espaciado-base: 1rem; // 16px
+$borde-redondeado-global: 8px;
+
+// Mapas (Sass Maps): Ideales para almacenar paletas de colores y breakpoints
+$colores: (
+    "primario":    #3498db,
+    "secundario":  #2ecc71,
+    "oscuro":      #2c3e50,
+    "claro":       #ecf0f1,
+    "peligro":     #e74c3c
+);
+
+$breakpoints: (
+    "movil":   480px,
+    "tablet":  768px,
+    "monitor": 1024px
+);
+
+// Función personalizada (@function): Devuelve siempre un valor (ej. calcular contraste o tamaños)
+// ¿Para qué sirve? Para hacer operaciones matemáticas complejas limpiamente.
+@function pixel-a-rem($pixeles) {
+    @return ($pixeles / 16) * 1rem;
+}
+
+
+/* ==========================================================================
+   2. MIXINS (Bloques de código reutilizables con o sin parámetros)
+   ========================================================================== */
+
+// Mixin 1: Sin argumentos (Para comportamientos fijos muy repetidos)
+@mixin limpiar-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Mixin 2: Con argumentos por defecto (Para Flexbox instantáneo)
+@mixin flex-pro($direccion: row, $justificar: center, $alinear: center) {
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: $justificar;
+    align-items: $alinear;
+}
+
+// Mixin 3: Con paso de bloques (@content) -> Ideal para Media Queries dinámicas
+// ¿Para qué sirve? Le pasas el nombre del breakpoint y te genera la media query sola.
+@mixin responder-a($pantalla) {
+    // Comprobamos si la palabra existe en nuestro mapa de breakpoints
+    @if map-has-key($breakpoints, $pantalla) {
+        @media (min-width: map-get($breakpoints, $pantalla)) {
+            @content; // Aquí se inyectará el CSS que escribas dentro
+        }
+    } @else {
+        @error "El breakpoint #{$pantalla} no existe en el mapa.";
+    }
+}
+
+
+/* ==========================================================================
+   3. PLACEHOLDERS Y HERENCIA (Para compartir código idéntico entre clases)
+   ========================================================================== */
+
+// Placeholder (%): No se compila en el CSS final a menos que alguien lo herede con @extend
+// ¿Para qué sirve? Para ahorrar líneas de CSS agrupando selectores que comparten estilos base.
+%tarjeta-base {
+    background-color: map-get($colores, "claro");
+    border-radius: $borde-redondeado-global;
+    padding: pixel-a-rem(20); // Uso de nuestra función (20px a rem)
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ==========================================================================
+   4. ESTRUCTURAS DE CONTROL (Bucles @each y @for para generar CSS en masa)
+   ========================================================================== */
+
+// Bucle @each: Recorre el mapa de colores y crea clases automáticas (.btn-primario, .btn-oscuro...)
+// ¿Para qué sirve? Para crear sistemas de botones o alertas de Bootstrap en 4 líneas de código.
+@each $nombre, $codigo-color in $colores {
+    .btn-#{$nombre} {
+        background-color: $codigo-color;
+        // Operador de color: Aclara el texto si el fondo es oscuro de manera inteligente
+        color: if(lightness($codigo-color) > 60%, map-get($colores, "oscuro"), white);
+        padding: 0.5rem 1.5rem;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        // Anidamiento y Pseudoclase de interacción (:hover)
+        &:hover {
+            // Función nativa: Oscurece el color original un 12% automáticamente
+            background-color: darken($codigo-color, 12%);
+        }
+    }
+}
+
+// Bucle @for: Genera clases de espaciado por niveles (útil si te piden utilidades propias)
+// Generará: .p-nivel-1 { padding: 4px; }, .p-nivel-2 { padding: 8px; }...
+@for $i from 1 through 3 {
+    .p-nivel-#{$i} {
+        padding: $i * 4px; // Operación matemática básica
+    }
+}
+
+
+/* ==========================================================================
+   5. APLICACIÓN PRÁCTICA (Estructura de un componente anidado real)
+   ========================================================================== */
+
+body {
+    font-family: $fuente-principal;
+    padding: $espaciado-base * 2; // Operador de multiplicación
+}
+
+// Contenedor principal de la interfaz
+.dashboard-grid {
+    // Uso del mixin flex de forma avanzada
+    @include flex-pro(column, flex-start, stretch);
+    gap: $espaciado-base;
+
+    // Aplicamos la Media Query con nuestro mixin para tablets y pantallas superiores
+    @include responder-a("tablet") {
+        flex-direction: row; // En pantallas grandes pasa a ser una fila
+    }
+
+    // Menú de navegación dentro del dashboard
+    .nav-sidebar {
+        background-color: map-get($colores, "oscuro");
+        
+        // Anidamiento del elemento hijo directo
+        ul {
+            @include limpiar-lista; // Inyectamos el mixin de limpieza de listas
+            
+            li {
+                padding: 10px;
+                
+                a {
+                    color: white;
+                    text-decoration: none;
+                    
+                    // Selector de padre (&): Genera .dashboard-grid .nav-sidebar ul li a:hover
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    // Tarjeta de contenido utilizando HERENCIA y CONDICIONALES
+    .tarjeta-usuario {
+        @extend %tarjeta-base; // Hereda toda la estructura de %tarjeta-base
+        border-left: 5px solid map-get($colores, "primario");
+        
+        // Condicional @if/@else para modificar estilos basados en variables
+        $modo-oscuro-tarjeta: false;
+        
+        @if $modo-oscuro-tarjeta == true {
+            background-color: #111;
+            color: #fff;
+        } @else {
+            background-color: #fff;
+            color: map-get($colores, "oscuro");
+        }
+
+        // Elemento anidado combinando Selectores BEM (Bloque-Elemento-Modificador) si te gusta ese orden
+        &__titulo {
+            font-size: pixel-a-rem(24);
+            margin-bottom: 0.5rem;
+        }
+
+        &__detalles {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    }
+}
