@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="styles_plantilla.css">
+    <title>DIW - Tarea evaluativa 06</title>
+</head>
+<body>
+
+    <header class="hero">
+        <p class="hero__eyebrow">DIW · Animaciones CSS</p>
+        <h1 class="hero__title">Tarea evaluativa 06</h1>
+        <p class="hero__subtitle">Microinteracciones y efectos visuales con una estética más cercana a dashboards, landings y productos web actuales.</p>
+    </header>
+
+    <main>
+        <section class="panel">
+            <h2>Acciones rápidas</h2>
+            <p class="instrucciones">Tres chips de navegación con icono y color propio que reaccionan al pasar el cursor, como accesos directos de un panel moderno.</p>
+
+            <nav class="quick-actions" aria-label="Acciones rápidas">
+                <button class="chip chip--analytics">
+                    <span class="chip__icono">📊</span>
+                    <span class="chip__texto">Analítica</span>
+                </button>
+                <button class="chip chip--automation">
+                    <span class="chip__icono">⚡</span>
+                    <span class="chip__texto">Automatizar</span>
+                </button>
+                <button class="chip chip--support">
+                    <span class="chip__icono">💬</span>
+                    <span class="chip__texto">Soporte</span>
+                </button>
+            </nav>
+        </section>
+
+        <section class="panel panel--dark">
+            <h2>Actividad en directo</h2>
+            <p class="instrucciones">Un monitor con barras luminosas que suben y bajan a distinto ritmo para simular señal, carga o actividad en tiempo real.</p>
+
+            <div class="monitor-card">
+                <span class="monitor-card__badge">LIVE</span>
+                <div class="signal-meter" aria-hidden="true">
+                    <div class="signal-bar signal-bar--1"></div>
+                    <div class="signal-bar signal-bar--2"></div>
+                    <div class="signal-bar signal-bar--3"></div>
+                    <div class="signal-bar signal-bar--4"></div>
+                    <div class="signal-bar signal-bar--5"></div>
+                    <div class="signal-bar signal-bar--6"></div>
+                    <div class="signal-bar signal-bar--7"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Tarjeta con foco dinámico</h2>
+            <p class="instrucciones">Una tarjeta promocional iluminada por un foco móvil que recorre la escena y crea una sensación de escaparate o producto destacado.</p>
+
+            <div class="spotlight-scene">
+                <div class="spotlight-glow"></div>
+
+                <div class="spotlight-arm">
+                    <div class="spotlight-arm__beam"></div>
+                    <div class="spotlight-arm__head"></div>
+                </div>
+
+                <article class="promo-card">
+                    <span class="promo-card__pill">Nuevo</span>
+                    <h3>Plan Pro</h3>
+                    <p>Automatizaciones, métricas y paneles compartidos en una sola vista.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel panel--dark">
+            <h2>Tarjeta 3D interactiva</h2>
+            <p class="instrucciones">Un bloque tridimensional con seis caras y etiquetas distintas que gira continuamente y se puede detener con un clic.</p>
+
+            <div class="showcase-scene">
+                <div class="showcase-cube" id="cubo3d" aria-label="Tarjeta 3D interactiva">
+                    <span class="showcase-cube__face showcase-cube__face--front">UI</span>
+                    <span class="showcase-cube__face showcase-cube__face--back">API</span>
+                    <span class="showcase-cube__face showcase-cube__face--right">SEO</span>
+                    <span class="showcase-cube__face showcase-cube__face--left">ADS</span>
+                    <span class="showcase-cube__face showcase-cube__face--top">CRM</span>
+                    <span class="showcase-cube__face showcase-cube__face--bottom">DATA</span>
+                </div>
+            </div>
+            <p class="instrucciones">Haz clic para pausar o reanudar la rotación.</p>
+        </section>
+
+        <section class="panel">
+            <h2>Nube con lluvia</h2>
+            <p class="instrucciones">Un widget del tiempo con nube redondeada y varias gotas en caída continua, inspirado en interfaces meteorológicas actuales.</p>
+
+            <div class="weather-widget">
+                <div class="cloud"></div>
+                <div class="rain" aria-hidden="true">
+                    <div class="drop drop--1"></div>
+                    <div class="drop drop--2"></div>
+                    <div class="drop drop--3"></div>
+                    <div class="drop drop--4"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Propuesta alternativa para trabajar animaciones CSS <span class="spark">✦</span></p>
+    </footer>
+</body>
+</html>

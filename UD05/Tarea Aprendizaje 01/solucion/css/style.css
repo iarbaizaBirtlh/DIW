@@ -1,0 +1,187 @@
+body{
+    font-size: 100%;
+    font-family: 'Arial', sans-serif;
+    margin: 1rem auto;
+    color: black;
+    max-width: 1920px; /* Debe tener 1920px de ancho máximo */
+    min-width: 375px; /* Debe tener 375px de ancho mínimo */
+}
+
+#contenedor{
+    background-color: #faf2cc;
+    margin: 0 1rem;
+    padding: 1rem 0;
+    color: #555;
+    height: 100px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 1em;
+}
+
+main{
+    background-color: #d0e9c6;
+    margin: 1rem;
+    display: grid;
+    padding: 1rem;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+article{
+    padding: 1rem;
+    background-color: #ebccd1;
+    border: 1px solid #c23131;
+}
+
+main article:nth-child(4){
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+main article:nth-child(5){
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.card-header{
+    display: flex;
+    align-items: center;
+}
+
+.card-header figure{
+    width: 2rem;
+    margin: 0;
+}
+
+.card-header figure img{
+    width: 100%;
+}
+
+.card-header h3{
+    padding-left: 1rem;
+}
+
+.card-info{
+    margin: 0;
+    font-size: small;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #777;
+}
+
+.card-info a,
+.card-info a:hover,
+.card-info a:visited{
+    color: black;
+    text-decoration: none;
+    font-style: italic;
+}
+
+footer{
+    background-color: rgba(124, 172, 213, 0.26);
+    padding: 1rem;
+    margin: 0 1rem;
+    text-align: center;
+}
+
+footer p{
+    margin: 0;
+}
+
+
+/****** En pantallas grandes, las tarjetas 4 a 7 ocuparán la mitad de la pantalla cada una ****************************/
+
+/* Deshago los estilos iniciales de las tarjetas 4 y 5 */
+@media (max-width: 1919.98px) {
+    main article:nth-child(4),
+    main article:nth-child(5){
+        grid-row-start: unset;
+        grid-row-end: unset;
+        grid-column-start: unset;
+        grid-column-end: unset;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1919.98px) {
+    /* Modifico el template de columnas para que sea 6 (el mínimo común múltiplo de 3 y 2)  */
+    main{
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    /* Modifico el span de las 3 primeras tarjetas para que sea doble */
+    main article:nth-child(-n+3){
+        grid-column: span 2;
+    }
+
+    /* Modifico el span de las tarjetas 4 a 7 para que sea triple */
+    main article:nth-child(n+4){
+        grid-column: span 3;
+    }
+}
+
+
+/****** En pantallas medianas, cada una de las 7 tarjetas ocupará la mitad de la pantalla *****************************/
+
+/* Modifico el span de todas las tarjetas para que sea 1 */
+@media (max-width: 1279.98px) {
+    main article{
+        grid-column: span 1;
+    }
+}
+
+@media (min-width: 960px) and (max-width: 1279.98px) {
+    /* Modifico el template de columnas para que sea 2  */
+    main{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/****** En pantallas pequeñas y muy pequeñas, cada una de las 7 tarjetas ocupará la pantalla completa *****************/
+
+/* Modifico el template de columnas para que sea 1 */
+@media (max-width: 959.98px) {
+    main{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/****** En pantallas muy pequeñas, el color del texto será claro y todos los fondos de color serán oscuros ************/
+
+@media (max-width: 599.98px) {
+    /* Modifico el color del texto y del fondo del body */
+    body{
+        color: white;
+        background-color: black;
+    }
+    /* Modifico el color del texto y del fondo del header */
+    header{
+        background-color: #bd9d0a;
+        color: #dadada;
+    }
+    /* Modifico el color de fondo de la main */
+    main{
+        background-color: #29750a;
+    }
+    /* Alterno el color del borde y del fondo de los article */
+    article{
+        background-color: #c23131;
+        border-color: #ebccd1;
+    }
+    /* Modifico el color del borde de la info de la tarjeta */
+    .card-info{
+        border-bottom: 1px solid #dadada;
+    }
+    /* Modifico el color del enlace de la info de la tarjeta */
+    .card-info a,
+    .card-info a:hover,
+    .card-info a:visited{
+        color: white;
+    }
+    /* Modifico el color de fondo del footer */
+    footer{
+        background-color: rgb(62, 117, 164);
+    }
+}

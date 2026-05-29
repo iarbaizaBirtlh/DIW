@@ -1,0 +1,19 @@
+﻿@mixin smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+@mixin card-shadow {
+  box-shadow: $shadow-md;
+}
+
+@mixin cat-bg($img) {
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 80%),
+    url($img) center/cover;
+}
+
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}

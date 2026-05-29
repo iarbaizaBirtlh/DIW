@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbaiza | PROFESIONAL PANS</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style-extra.css">
+</head>
+<body>
+    <header class="header-container">
+        <a href="index.html" class="brand-section">
+            <div class="logo-box"></div>
+            <div class="brand-text">
+                <span class="brand-name">Arbaiza</span>
+                <span class="brand-subtitle">PROFESIONAL PANS</span>
+            </div>
+        </a>
+
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="store.html" class="nav-link">Tienda</a>
+            <a href="comparison.html" class="nav-link">Comparar</a>
+            <a href="cart.html" class="nav-link active">Carrito</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="lang-selector">
+                <span class="lang-option selected">ES</span>
+                <span class="lang-option">EU</span>
+            </div>
+
+            <button class="icon-btn">🔍</button>
+
+            <a href="cart.html" class="cart icon-btn">
+                🛒
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <section class="store-header">
+            <h1>Carrito de Compra</h1>
+            <p>Revisa tus productos antes de finalizar la compra</p>
+        </section>
+
+        <div class="cart-layout-container">
+            <section class="cart-items-section">
+                <div class="cart-table-header">
+                    <span class="col-prod">PRODUCTO</span>
+                    <span class="col-price">PRECIO</span>
+                    <span class="col-qty">CANTIDAD</span>
+                    <span class="col-total">TOTAL</span>
+                </div>
+                <div class="cart-item-row">
+                    <div class="cart-item-info">
+                        <img src="images/antiadherente.png" alt="Sartén Antiadherente">
+                        <div class="item-details">
+                            <h3>Sartén Antiadherente Pro</h3>
+                            <p>28 cm • Aluminio forjado</p>
+                        </div>
+                    </div>
+                    <div class="item-price">79,00 €</div>
+                    <div class="item-quantity">
+                        <div class="qty-selector">
+                            <button class="qty-btn">−</button>
+                            <input type="text" value="1" readonly>
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="item-total-price">
+                        <strong>79,00 €</strong>
+                        <button class="remove-item-btn">🗑</button>
+                    </div>
+                </div>
+                <div class="cart-item-row">
+                    <div class="cart-item-info">
+                        <img src="images/hierro.png" alt="Sartén Hierro">
+                        <div class="item-details">
+                            <h3>Sartén Hierro Fundido</h3>
+                            <p>26 cm • Hierro fundido</p>
+                        </div>
+                    </div>
+                    <div class="item-price">89,00 €</div>
+                    <div class="item-quantity">
+                        <div class="qty-selector">
+                            <button class="qty-btn">−</button>
+                            <input type="text" value="1" readonly>
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="item-total-price">
+                        <strong>89,00 €</strong>
+                        <button class="remove-item-btn">🗑</button>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="cart-summary-section">
+                <div class="summary-card">
+                    <h2>Resumen del Pedido</h2>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>168,00 €</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Envío</span>
+                        <span class="free-shipping">Gratis</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>IVA (21%)</span>
+                        <span>35,28 €</span>
+                    </div>
+                    <hr class="summary-divider">
+                    <div class="summary-row total-row">
+                        <span>Total</span>
+                        <span>203,28 €</span>
+                    </div>
+                    <button class="btn-checkout">
+                        <span class="lock-icon">🔒</span> Proceder al Pago
+                    </button>
+                    
+                    <div class="shipping-info">
+                        <span class="truck-icon">🚚</span> Envío gratis en pedidos superiores a 50€
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-bio">
+                <h2>Arbaiza</h2>
+                <p>Teinda especializada en sartenes y menaje de conina de alta gama. Pasión por la gastronomía desde el corazón de Araba.</p>
+                <div class="social-icons">
+                    <div class="icon-box">i</div>
+                    <div class="icon-box">f</div>
+                    <div class="icon-box">x</div>
+                </div>
+            </div>
+            <div class="footer-cat">
+                <h3>Categorías</h3>
+                <ul>
+                    <li>Antiadherentes</li>
+                    <li>Acero Inoxidable</li>
+                    <li>Hierro Fundido</li>
+                    <li>Blog & Recetas</li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">&#128205;</span>
+                    <p>Plaza de la Virgen Blanca, 1<br>01001 Vitoria-Gazteiz</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">&#9742;</span>
+                    <p>+34 945 000 000</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">&#9993;</span>
+                    <p>info@arbaiza.eus</p>
+                </div>
+                <div class="map-box">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.215570087132!2d-2.675314023419389!3d42.84719260421293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4fc26c79a9f979%3A0x66c5c84d7a8d870!2sPlaza%20de%20la%20Virgen%20Blanca%2C%2001001%20Vitoria-Gasteiz%20Araba!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Arbaiza Pans. Todos los derechos reservados.</span>
+            <div class="legal-links">
+                <span>Aviso legal</span>
+                <span>Privacidad</span>
+                <span>Cookies</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

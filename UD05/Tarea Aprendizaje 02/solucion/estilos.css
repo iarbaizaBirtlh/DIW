@@ -1,0 +1,29 @@
+
+body { 
+    background-color:#f2f2f2; 
+}
+p a {
+    text-decoration: none;
+}
+p a:hover{
+    text-decoration: underline;
+}
+.nav-link:hover {
+    background-color: teal;
+    color:whitesmoke;
+}
+.dash {
+    background-color: cornflowerblue;
+}
+.fondo {
+    background-color: black;
+}
+.bloquear:hover {
+    background-color: darkgray;
+}
+
+@media (max-width:991px) {
+    .col-1 {
+        width: 60px;
+    }
+}

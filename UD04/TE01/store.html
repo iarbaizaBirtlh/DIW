@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbaiza | PROFESIONAL PANS</title>
+    <link rel="stylesheet" href="scss/style.css">
+</head>
+<body>
+    <header class="header-container">
+        <a href="index.html" class="brand-section">
+            <div class="logo-box"></div>
+            <div class="brand-text">
+                <span class="brand-name">Arbaiza</span>
+                <span class="brand-subtitle">PROFESIONAL PANS</span>
+            </div>
+        </a>
+
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="store.html" class="nav-link active">Tienda</a>
+            <a href="comparison.html" class="nav-link">Comparar</a>
+            <a href="cart.html" class="nav-link">Carrito</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="lang-selector">
+                <span class="lang-option selected">ES</span>
+                <span class="lang-option">EU</span>
+            </div>
+
+            <button class="icon-btn">🔍</button>
+
+            <a href="cart.html" class="cart icon-btn">
+                🛒
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="store-header">
+            <h1>Nuestra Tienda</h1>
+            <p>Explora nuestra colección completa de sartenes profesionales</p>
+        </section>
+        <section class="store-container">
+            <aside class="filters-sidebar">
+                <div class="filter-group-header">
+                    <h3>Filtrar</h3>
+                    <button class="clear-filters">Limpiar todo</button>
+                </div>
+                <div class="filter-section">
+                    <h4>CATEGORÍAS</h4>
+                    <label class="filter-item"><input type="checkbox" checked> Todas</label>
+                    <label class="filter-item"><input type="checkbox"> Antiadherentes</label>
+                    <label class="filter-item"><input type="checkbox"> Acero Inoxidable</label>
+                    <label class="filter-item"><input type="checkbox"> Hierro Fundido</label>
+                    <label class="filter-item"><input type="checkbox"> Wok</label>
+                </div>
+                <div class="filter-section">
+                    <h4>PRECIO</h4>
+                    <div>
+                        <input type="range" min="20" max="300" value="150" class="slider">
+                        <div class="price-labels">
+                            <span>€20</span>
+                            <span>€300+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <h4>DIÁMETRO</h4>
+                    <div class="diameter-options">
+                        <button class="diam-btn">20cm</button>
+                        <button class="diam-btn active">24cm</button>
+                        <button class="diam-btn">28cm</button>
+                        <button class="diam-btn">32cm</button>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="store-products-wrapper" style="margin-top: 40px;">
+                <div class="cat-header">
+                    <h2>Todos los productos</h2>
+                    <div class="order-by">
+                        <span>Ordenar por: &emsp;<strong>Destacados</strong></span>
+                        <span>&emsp;&emsp;▼</span>
+                    </div>
+                </div>
+                <div class="products">
+                    <article class="products-card">
+                        <div class="cards">
+                            <span class="card card-green">ANTIADHERENTE</span>
+                            <span class="card card-orange">BEST SELLER</span>
+                        </div>
+                        <div class="product-img">
+                            <img src="images/antiadherente.png">
+                        </div>
+                        <div class="product-info">
+                            <h3>Sartén Antiadherente Pro</h3>
+                            <p class="collection">Collección Titanium</p>
+                            <div class="spect">
+                                <p><span>✔️</span> Libre de PFOA</p>
+                                <p><span>🔶</span> Triple capa reforzada</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">€45.90</span>
+                                <button class="add-to-card">🛒</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="products-card">
+                        <div class="cards">
+                            <span class="card card-blue">ACERO INOXIDABLE</span>
+                        </div>
+                        <div class="product-img">
+                            <img src="images/inox.png">
+                        </div>
+                        <div class="product-info">
+                            <h3>Sartén Chef Inox 28cm</h3>
+                            <p class="collection">Serie Master</p>
+                            <div class="spect">
+                                <p><span>🪨</span> Acero 18/10</p>
+                                <p><span>🍴</span> Apto para horno</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">€62.50</span>
+                                <button class="add-to-card">🛒</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="products-card">
+                        <div class="cards">
+                            <span class="card card-yellow">HIERRO FUNDIDO</span>
+                        </div>
+                        <div class="product-img">
+                            <img src="images/hierro.png">
+                        </div>
+                        <div class="product-info">
+                            <h3>Hierro Fundido Tradicional</h3>
+                            <p class="collection">Línea Heritage</p>
+                            <div class="spect">
+                                <p><span>🔥</span> Retención de calor superior</p>
+                                <p><span>⏱️</span> Garantía de por vida</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">€38.00</span>
+                                <button class="add-to-card">🛒</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="products-card">
+                        <div class="cards">
+                            <span class="card card-purple">WOK</span>
+                        </div>
+                        <div class="product-img">
+                            <img src="images/wok.png">
+                        </div>
+                        <div class="product-info">
+                            <h3>Wok Oriental Carbon Steel</h3>
+                            <p class="collection">Auténtico Sabor</p>
+                            <div class="spect">
+                                <p><span>⚡</span> Calentamiento rápido</p>
+                                <p><span>↕️</span> 30cm diámetro</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">€54.20</span>
+                                <button class="add-to-card">🛒</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="products-card product-card-agotado">
+                        <div class="cards">
+                            <span class="card card-blue">ACERO INOXIDABLE</span>
+                            <span class="card card-grey">AGOTADO</span>
+                        </div>
+                        <div class="product-img">
+                            <img src="images/cobre.png">
+                        </div>
+                        <div class="product-info">
+                            <h3>Cazo de Cobre Premium</h3>
+                            <p class="collection">Edición Limitada</p>
+                            <div class="spect">
+                                <p><span>✨</span> Conductividad máxima</p>
+                                <p><span>⭐</span> Acabado artesanal</p>
+                            </div>
+                            <div class="product-footer">
+                                <span class="price">€120.00</span>
+                                <button class="add-to-card">🔔</button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="products-card">
+                        <div class="cards">
+                            <span class="card card-green">ANTIADHERENTE</span>
+                            <span class="card card-red">-15%</span>
+                        </div>
+                        <div class="product-img">
+                            <img src="images/crepera.png">
+                        </div>
+                        <div class="product-info">
+                            <h3>Crepera Antiadherente</h3>
+                            <p class="collection">Especiales</p>
+                            <div class="spect">
+                                <p><span>🔴</span> Borde bajo</p>
+                                <p><span>⏲️</span> Reparto de calor uniforme</p>
+                            </div>
+                            <div class="product-footer">
+                                <div class="price-group">
+                                    <span class="descuento">€32.00</span>
+                                    <span class="price">€27.20</span>
+                                </div>
+                                <button class="add-to-card">🛒</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <nav class="paginacion" >
+                    <button class="pag-nav">&lt;</button>
+                    <button class="pag-num active">1</button>
+                    <button class="pag-num">2</button>
+                    <button class="pag-num">3</button>
+                    <button class="pag-nav">&gt;</button>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-bio">
+                <h2>Arbaiza</h2>
+                <p>Teinda especializada en sartenes y menaje de conina de alta gama. Pasión por la gastronomía desde el corazón de Araba.</p>
+                <div class="social-icons">
+                    <div class="icon-box">i</div>
+                    <div class="icon-box">f</div>
+                    <div class="icon-box">x</div>
+                </div>
+            </div>
+            <div class="footer-cat">
+                <h3>Categorías</h3>
+                <ul>
+                    <li>Antiadherentes</li>
+                    <li>Acero Inoxidable</li>
+                    <li>Hierro Fundido</li>
+                    <li>Blog & Recetas</li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">&#128205;</span>
+                    <p>Plaza de la Virgen Blanca, 1<br>01001 Vitoria-Gazteiz</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">&#9742;</span>
+                    <p>+34 945 000 000</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">&#9993;</span>
+                    <p>info@arbaiza.eus</p>
+                </div>
+                <div class="map-box">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.215570087132!2d-2.675314023419389!3d42.84719260421293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4fc26c79a9f979%3A0x66c5c84d7a8d870!2sPlaza%20de%20la%20Virgen%20Blanca%2C%2001001%20Vitoria-Gasteiz%20Araba!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Arbaiza Pans. Todos los derechos reservados.</span>
+            <div class="legal-links">
+                <span>Aviso legal</span>
+                <span>Privacidad</span>
+                <span>Cookies</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

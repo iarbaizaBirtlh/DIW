@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="estilos.css">
+
+    <title>DIW05</title>
+  </head>
+
+  <body class="container-fluid g-0 overflow-hidden">
+
+        <!-- 
+        Menú navegación superior. Bloque flex. Solo visible en pantallas pequeñas
+     -->
+     <nav class="d-block d-sm-none bg-dark d-flex justify-content-center sticky-top">
+        <h1 class="text-light">NAV HORIZONTAL</h1>>
+    </nav>
+
+    <!-- 
+        Bloque principal. 2 bloques que cambian de ancho.
+     -->
+    <main class="row g-0">
+
+        <!-- 
+            Menú de navegación lateral. Se oculta para pantallas pequeñas.
+            Ocupa 2 columnas en pantallas grandes. Una sola columna en pantallas medianas y pequeñas.
+         -->
+        <div class="col-sm-1 col-lg-2 fondo d-none d-sm-block">
+            <h1 class="text-light">N V</h1>
+        </div>
+
+        <!-- 
+            Resto de la página y las columnas
+            Ocupa 2 columnas en pantallas grandes y medianas. Una sola columna en pantallas pequeñas y muy pequeñas.
+         -->
+        <div class="col">
+            <div class="container-fluid">
+                <div class="row g-0">
+
+                    <!-- 
+                        Formulario: ocupa 11 columnas en pantallas pequeñas y muy pequeñas, 7 en el resto
+                        Se centra en el espacio disponible (container)
+                     -->
+                    <div class="col-11 col-md-7 container bg-primary">
+                        <h1 class="text-center">FORMULARIO</h1>
+                    </div>
+
+                    <!--
+                        Sidebar: ocupa 11 columnas en pantallas pequeñas y muy pequeñas, 4 en el resto
+                        Se centra en el espacio disponible (container)
+                    -->
+                    <div class="col-11 col-md-4 container bg-secondary">
+                        <h1 class="text-center">SIDEBAR</h1>                       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    
+    </main>
+
+    <!-- JavaScript: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+  </body>
+</html>
